@@ -5,38 +5,42 @@
 	import IconParagraph from './icons/IconParagraph.svelte';
 	import IconQuote from './icons/IconQuote.svelte';
 
-	export let editor: Editor = undefined;
-	export let tooltip: boolean = false;
+	interface Props {
+		editor?: Editor;
+		tooltip?: boolean;
+	}
+
+	let { editor = undefined, tooltip = false }: Props = $props();
 </script>
 
 <div class="omnia-create" class:tooltip>
 	{#if editor}
 		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+			onclick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
 			class:active={editor.isActive('heading', { level: 1 })}
 		>
 			<IconHeading />
 		</button>
 		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+			onclick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
 			class:active={editor.isActive('heading', { level: 2 })}
 		>
 			<IconHeading />
 		</button>
 		<button
-			on:click={() => editor.chain().focus().toggleBlockquote().run()}
+			onclick={() => editor.chain().focus().toggleBlockquote().run()}
 			class:active={editor.isActive('blockquote')}
 		>
 			<IconQuote />
 		</button>
 		<button
-			on:click={() => editor.chain().focus().toggleCodeBlock().run()}
+			onclick={() => editor.chain().focus().toggleCodeBlock().run()}
 			class:active={editor.isActive('codeBlock')}
 		>
 			<IconCode />
 		</button>
 		<button
-			on:click={() => editor.chain().focus().setParagraph().run()}
+			onclick={() => editor.chain().focus().setParagraph().run()}
 			class:active={editor.isActive('paragraph')}
 		>
 			<IconParagraph />

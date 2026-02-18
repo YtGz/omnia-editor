@@ -5,43 +5,47 @@
 	import IconParagraph from './icons/IconParagraph.svelte';
 	import IconQuote from './icons/IconQuote.svelte';
 
-	export let editor: Editor = undefined;
+	interface Props {
+		editor?: Editor;
+	}
+
+	let { editor = undefined }: Props = $props();
 </script>
 
 <div class="omnia-tooltip">
 	{#if editor}
 		<button
-			on:click={() => editor.chain().focus().toggleBold().run()}
+			onclick={() => editor.chain().focus().toggleBold().run()}
 			class:active={editor.isActive('bold')}
 		>
 			Bold
 		</button>
 		<button
-			on:click={() => editor.chain().focus().toggleItalic().run()}
+			onclick={() => editor.chain().focus().toggleItalic().run()}
 			class:active={editor.isActive('italic')}
 		>
 			Italic
 		</button>
 		<button
-			on:click={() => editor.chain().focus().toggleStrike().run()}
+			onclick={() => editor.chain().focus().toggleStrike().run()}
 			class:active={editor.isActive('strike')}
 		>
 			Strike
 		</button>
 		<button
-			on:click={() => editor.chain().focus().setTextAlign('left').run()}
+			onclick={() => editor.chain().focus().setTextAlign('left').run()}
 			class:active={editor.isActive('strike')}
 		>
 			Left
 		</button>
 		<button
-			on:click={() => editor.chain().focus().setTextAlign('center').run()}
+			onclick={() => editor.chain().focus().setTextAlign('center').run()}
 			class:active={editor.isActive('strike')}
 		>
 			Center
 		</button>
 		<button
-			on:click={() => editor.chain().focus().setTextAlign('right').run()}
+			onclick={() => editor.chain().focus().setTextAlign('right').run()}
 			class:active={editor.isActive('strike')}
 		>
 			Right
@@ -49,31 +53,31 @@
 
 		<span>|</span>
 		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+			onclick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
 			class:active={editor.isActive('heading', { level: 1 })}
 		>
 			<IconHeading />
 		</button>
 		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+			onclick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
 			class:active={editor.isActive('heading', { level: 2 })}
 		>
 			<IconHeading />
 		</button>
 		<button
-			on:click={() => editor.chain().focus().toggleCodeBlock().run()}
+			onclick={() => editor.chain().focus().toggleCodeBlock().run()}
 			class:active={editor.isActive('codeBlock')}
 		>
 			<IconCode />
 		</button>
 		<button
-			on:click={() => editor.chain().focus().setParagraph().run()}
+			onclick={() => editor.chain().focus().setParagraph().run()}
 			class:active={editor.isActive('paragraph')}
 		>
 			<IconParagraph />
 		</button>
 		<button
-			on:click={() => editor.chain().focus().toggleBlockquote().run()}
+			onclick={() => editor.chain().focus().toggleBlockquote().run()}
 			class:active={editor.isActive('blockquote')}
 		>
 			<IconQuote />

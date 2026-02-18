@@ -1,3 +1,13 @@
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+
+	interface Props {
+		children: Snippet;
+	}
+
+	let { children }: Props = $props();
+</script>
+
 <header>
 	<nav>
 		<a href="/">Home</a>
@@ -7,7 +17,7 @@
 </header>
 
 <main>
-	<slot />
+	{@render children()}
 </main>
 
 <style lang="scss">

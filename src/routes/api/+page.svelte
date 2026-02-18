@@ -13,20 +13,20 @@
 		output = JSON.stringify(editor.getJSON());
 	};
 	const getHTML = () => {
-		output = editor.getHTML();
+		output = editor.getHTML() ?? '';
 	};
 </script>
 
 <h1>Output</h1>
-<button on:click={getJSON}>Get JSON</button>
-<button on:click={getHTML}>Get HTML</button>
+<button onclick={getJSON}>Get JSON</button>
+<button onclick={getHTML}>Get HTML</button>
 {#if output}
-	<textarea cols="30" rows="10" bind:value={output} />
+	<textarea cols="30" rows="10" bind:value={output}></textarea>
 {/if}
 <OmniaEditor bind:this={editor} {value} />
 
 <h1>History</h1>
 
-<button on:click={editorCount.undo}>Undo</button>
-<button on:click={editorCount.redo}>Redo</button>
+<button onclick={editorCount.undo}>Undo</button>
+<button onclick={editorCount.redo}>Redo</button>
 <OmniaEditor bind:this={editorCount} {value} />

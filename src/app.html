@@ -17,9 +17,9 @@
 				margin: auto;
 			}
 		</style>
-		%svelte.head%
+		%sveltekit.head%
 	</head>
-	<body>
-		<div id="editor">%svelte.body%</div>
+	<body data-sveltekit-preload-data="hover">
+		<div id="editor">%sveltekit.body%</div>
 	</body>
 </html>
